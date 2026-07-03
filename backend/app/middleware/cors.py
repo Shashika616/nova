@@ -7,8 +7,7 @@ def setup_cors(app):
         CORSMiddleware,
         allow_origins=[
             "http://localhost:5173",  # Vite React
-            "http://localhost:3000", 
-            "*",   
+            "http://localhost:3000",   
         ],
         allow_credentials=True,
         allow_methods=["*"],
