@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600&display=swap');
+
+/* =========================================================
+   DESIGN TOKENS
+========================================================= */
+
+:root {
+  --bg: #0e0f12;
+  --paper: #fbf7ef;
+  --paper-alt: #f6f1e7;
+  --text: #161616;
+  --muted: rgba(0,0,0,0.55);
+  --border: rgba(0,0,0,0.12);
+  --primary: #111;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+/* =========================================================
+   RESET & BASE
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.18);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+/* =========================================================
+   LAYOUT WRAPPER
+========================================================= */
+
+.screen-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  transition: background 0.3s ease;
+}
+
+/* =========================================================
+   BOOK CONTAINER
+========================================================= */
+
+.book-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  height: 88vh;
+  min-height: 640px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.55),
+    0 16px 32px rgba(0,0,0,0.25);
+}
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+.book-page {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-6);
+}
+
+.book-page-left {
+  background: linear-gradient(to bottom, var(--paper-alt), var(--paper));
+  border-right: 1px solid var(--border);
+  padding-right: var(--space-6);
+}
+
+.book-page-right {
+  background: linear-gradient(to bottom, #ffffff, #faf7f0);
+  padding-left: var(--space-6);
+}
+
+/* =========================================================
+   SPINE
+========================================================= */
+
+.book-spine {
+  width: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.18),
+    rgba(255,255,255,0.04),
+    rgba(0,0,0,0.06)
+  );
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   SCROLLABLE CONTENT (RIGHT PAGE)
+========================================================= */
+
+.book-content-scroll {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto !important;
+  padding-right: var(--space-3);
+  padding-bottom: 96px;
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.custom-serif-rendering {
+  font-family: "EB Garamond", serif;
+  font-size: 1.12rem;
+  line-height: 1.9;
+  color: var(--text);
+  text-align: justify;
+  letter-spacing: 0.2px;
+}
+
+.custom-serif-rendering p {
+  margin-bottom: var(--space-5);
+}
+
+h1, h2, h3 {
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+.book-input-field {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.7);
+  outline: none;
+  transition: all 0.18s ease;
+  font-family: Inter, sans-serif;
+  color: var(--text);
+}
+
+.book-input-field:focus {
+  border-color: rgba(0,0,0,0.4);
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.book-input-field::placeholder {
+  color: #b0b0b0;
+}
+
+select.book-input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
+
+.book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.65);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: Inter, sans-serif;
+  text-align: left;
+}
+
+.book-btn:hover {
+  background: rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+.book-btn:active {
+  transform: translateY(0px);
+}
+
+.book-btn-active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.book-btn-active:hover {
+  background: #2a2a2a;
+}
+
+.book-btn-primary {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.book-btn-primary:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   CHIPS / TAGS
+========================================================= */
+
+.book-chip {
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  color: rgba(0,0,0,0.65);
+  border: 1px solid transparent;
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.book-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.book-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.25s ease;
+}
+
+/* =========================================================
+   SECTION RENDERING (RIGHT PAGE)
+========================================================= */
+
+.section-block {
+  border-left: 3px solid #e0e0e0;
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: Inter, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #1a1a1a;
+}
+
+.section-content {
+  font-family: "EB Garamond", serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+}
+
+.overview-block {
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   SUGGESTIONS CHIPS
+========================================================= */
+
+.suggestions-block {
+  margin-top: 2rem;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 1.5rem;
+}
+
+.suggestion-chip {
+  padding: 0.4rem 1rem;
+  background: #f0f0f0;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: Inter, sans-serif;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.suggestion-chip:hover {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.suggestion-chip:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   CONTENT BODY (PRESERVES FORMATTING)
+========================================================= */
+
+.content-body {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* =========================================================
+   RESPONSIVE (MOBILE)
+========================================================= */
+
+@media (max-width: 768px) {
+  .book-container {
+    flex-direction: column !important;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .book-page {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: var(--space-4);
+  }
+
+  .book-page-left {
+    flex: 0 0 auto;
+    height: auto;
+    max-height: 42vh;
+    overflow-y: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-right: var(--space-4);
+  }
+
+  .book-page-right {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--space-4);
+  }
+
+  .book-content-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 48px;
+  }
+
+  .book-spine {
+    display: none;
+  }
+
+  .screen-wrapper {
+    padding: 0;
+  }
+
+  .book-container {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}
